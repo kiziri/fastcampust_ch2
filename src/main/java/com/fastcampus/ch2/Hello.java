@@ -6,11 +6,27 @@ import org.springframework.web.bind.annotation.RequestMapping;
 // 원격 호출이 가능한 프로그램으로 등록
 @Controller
 public class Hello {
-	
+	int iv = 10;	// 인스턴스 변수
+	static int cv = 20;	// static 변수
+
 	// 2. URL과 메서드를 연결
-	@RequestMapping("/hello")
-	public void main() {
-		System.out.println("Hello");
+	@RequestMapping("/hello1")
+	public void main() {	// 인스턴스 메서드 - iv, cv를 둘 다 사용 가능함
+		System.out.println("Hello - public");
+		System.out.println(cv);	// OK
+		System.out.println(iv);	// OK
+	}
+
+	// 2. URL과 메서드를 연결
+	@RequestMapping("/hello2")
+	private void main3() {	// private 메서드 - iv, cv를 둘 다 사용 가능함
+		System.out.println("Hello - private");
+		System.out.println(cv);	// OK
+		System.out.println(iv);	// OK
 	}
 	
+	public static void main2() {	// static 메서드 - cv만 사용 가능함 (인스턴스 사용 불가)
+		System.out.println(cv);	// OK
+//		System.out.println(iv);	// 에러
+	}
 }
