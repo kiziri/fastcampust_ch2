@@ -13,22 +13,25 @@ import java.util.Calendar;
 // 년월일을 입력하면, 요일을 알려주는 프로그램
 public class YoilTeller2 {
     // 2. 외부로부터의 통신 방식을 통한 통신 연결 메서드
+    // http://localhost:8080/ch2/getYoil?year=2022&month=1&day=31
     @RequestMapping("/getYoil")
     public void main(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        // 1. 입력
+        // 1. 입력 : HTTP 통신으로부터 데이터를 전송받음
         // 브라우저(외부)부터 날짜와 요일을 위한 변수의 값을 받음
         String year = request.getParameter("year");
         String month = request.getParameter("month");
         String day = request.getParameter("day");
 
+        // 문자열을 정수(숫자)로 변환
         int yyyy = Integer.parseInt(year);
         int mm = Integer.parseInt(month);
         int dd = Integer.parseInt(day);
 
-        // 2. 작업
+        // 2. 작업 : 날짜 세팅
         Calendar cal = Calendar.getInstance();
         cal.set(yyyy, mm-1, dd);
 
+        // 요일을 알아내는 부문 ex. 1:일요일, 2:월요일...
         int dayOfWeek = cal.get(Calendar.DAY_OF_WEEK);
         char yoil = " 일월화수목금토".charAt(dayOfWeek);
 
