@@ -2,7 +2,7 @@
 <%@ page session="false" %>
 <html>
 <head>
-	<title>Yoil Home</title>
+	<title>YoilTellerMVC</title>
 </head>
 <body>
 	<P> ${year }년 ${month }월 ${day }일은 ${yoil }입니다.</P>
