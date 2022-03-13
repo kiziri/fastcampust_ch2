@@ -21,7 +21,11 @@ public class BoardController {
     private boolean loginCheck(HttpServletRequest request) {
         // 1. 세션을 얻어서
         HttpSession session = request.getSession();
-        // 2. 세션에 id가 있는지 확인, 있으면 true를 반환
+        // 2. 세션에 id가 있는지 확인, 있으면 true를 반환 -> 해당 제어문의 반환을 간결히 변환
+//        if (session.getAttribute("id") != null)
+//            return true;
+//        else 
+//            return false;
         return session.getAttribute("id")!=null;
     }
 }
