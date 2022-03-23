@@ -1,6 +1,5 @@
 package com.fastcampus.ch2;
 
-import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.beans.propertyeditors.StringArrayPropertyEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,17 +12,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 @Controller
 @RequestMapping("/register")
 public class RegisterController {
     @InitBinder
     public void toDate(WebDataBinder binder) {
-        SimpleDateFormat df = new SimpleDateFormat("yyyy-mm-dd");
-        binder.registerCustomEditor(Date.class, new CustomDateEditor(df, false));
-        binder.registerCustomEditor(String[].class, new StringArrayPropertyEditor("#"));
+//        SimpleDateFormat df = new SimpleDateFormat("yyyy-mm-dd");
+//        binder.registerCustomEditor(Date.class, new CustomDateEditor(df, false));
+        binder.registerCustomEditor(String[].class, "hobby", new StringArrayPropertyEditor("#"));
     }
 
 //	@RequestMapping(value="/register/add", method=RequestMethod.GET) // 신규회원 가입
